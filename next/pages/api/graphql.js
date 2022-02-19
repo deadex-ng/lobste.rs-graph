@@ -35,7 +35,6 @@ const driver = neo4j.driver(
     neo4j.auth.basic(process.env.NEO4J_USER, process.env.NEO4J_PASSWORD)
 );
 
-//const driver = neo4j.driver('neo4j+s://2d2faf57.databases.neo4j.io', neo4j.auth.basic(neo4j, 'LzTVKAe08BMbdVSCNI3C4BGIDp0eXCN2oqN9PXDjn3M'));
 
 const neoSchema = new Neo4jGraphQL({typeDefs, driver});
 console.log(`VALUE OF NEOSCHEMA ${driver}`);
