@@ -45,7 +45,12 @@ export default async function handler(req, res) {
   }
 
   const neoSchema = new Neo4jGraphQL({ typeDefs, driver });
-  const apolloServer = new ApolloServer({ schema: await neoSchema.getSchema() });
+  const apolloServer = new ApolloServer({ 
+    schema: await neoSchema.getSchema(),
+    playground: true,
+    introspection: true,
+    plugins: [ApolloServerPluginLandingPageGraphQLPlayground],
+  });
   await apolloServer.start();
   await apolloServer.createHandler({
       path: "/api/graphql",
